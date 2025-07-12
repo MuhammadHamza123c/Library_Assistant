@@ -52,9 +52,3 @@ At Emerson University Multan, students often struggle to find books related to t
 
 ---
 
-## 📦 Installation
-
-### 1. Clone the Repo
-```bash
-git clone https://github.com/yourusername/emerson-library-assistant.git
-cd emerson-library-assistant
