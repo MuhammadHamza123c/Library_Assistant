@@ -1,28 +1,28 @@
-# 📚 Emerson University Library Assistant
+# 📚 Library_Assistant
 
 > “They needed it, but they didn’t build it — so I did.” 💡  
-> An AI-powered assistant to make the university library smarter, faster, and student-friendly.
+> An AI-powered assistant to make libraries smarter, faster, and student-friendly.
 
 ---
 
 ## 🚀 Project Overview
 
-At Emerson University Multan, students often struggle to find books related to their field due to a disorganized library system. To solve this, I created an **AI Library Assistant** that:
+In many libraries, students struggle to find the right books, understand borrowing rules, or get quick help. This project solves that problem by creating an **AI Library Assistant** that:
 
-- Helps students **find relevant books** using semantic search
+- Helps students **find relevant books** using smart search
 - Provides **library rules, timings, and issue policies**
-- Accepts **uploaded book images** and extracts text using OCR
-- Works as a **chatbot over WhatsApp** via `n8n` workflows
+- Extracts text from **uploaded book images** using OCR
+- Works through **WhatsApp chatbot integration**
 
 ---
 
 ## 🧠 Features
 
 - 📘 Book suggestions based on subject
-- 🔍 Smart book search using vector embeddings
-- 🕒 Answers about rules, timings, and borrowing limits
+- 🔍 Book finding using vector embeddings
+- 🕒 Replies about rules, timings, and book limits
 - 🖼️ OCR support to read book titles from images
-- 💬 WhatsApp integration using `n8n` + `ngrok`
+- 💬 Chatbot replies through WhatsApp (via n8n)
 
 ---
 
@@ -30,25 +30,31 @@ At Emerson University Multan, students often struggle to find books related to t
 
 | Component | Tech |
 |----------|------|
-| Language Model | [LLaMA 3 (8B)](https://groq.com) via Groq API |
+| Language Model | LLaMA 3 (8B) via Groq API |
 | Embeddings | HuggingFace `thenlper/gte-large` |
 | Vector Store | Chroma DB |
 | Backend | FastAPI |
-| Image OCR | Tesseract OCR + Pillow |
-| Workflow Automation | n8n |
-| WhatsApp Integration | n8n + ngrok tunnel |
+| OCR | Tesseract + Pillow |
+| Automation | n8n |
+| WhatsApp Bot | n8n + ngrok tunnel |
 
 ---
 
 ## 🧩 How It Works
 
-1. **Query**: Student sends a question via web or WhatsApp.
-2. **Search**: The system searches similar content using vector embeddings.
-3. **Prompting**: A custom prompt is generated with context and memory.
-4. **Response**: LLaMA 3 replies with a short, helpful answer.
-5. **Memory**: The assistant remembers recent queries and replies.
-6. **Image OCR**: If the user uploads a book image, it extracts text using Tesseract.
-7. **WhatsApp Bot**: n8n forwards WhatsApp messages to FastAPI and sends back AI replies.
+1. **User Query** → Sent via API or WhatsApp
+2. **Vector Search** → Chroma returns relevant book content using `gte-large` embeddings
+3. **Prompt Building** → LangChain builds prompt with memory + context
+4. **Response** → LLaMA 3 (via Groq) generates the final reply
+5. **Memory** → Previous messages are tracked and used for better responses
+6. **Image OCR** → Text is extracted from uploaded book images
+7. **n8n WhatsApp Bot** → Sends user messages to FastAPI and replies back with AI responses
 
 ---
 
+## 📦 Installation
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/Library_Assistant.git
+cd Library_Assistant
