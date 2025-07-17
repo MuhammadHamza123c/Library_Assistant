@@ -1,60 +1,64 @@
-# 📚 Library_Assistant
+📚 Library_Assistant
+“They needed it, but they didn’t build it — so I did.” 💡
+An AI-powered assistant to make libraries smarter, faster, and more student-friendly.
 
-> “They needed it, but they didn’t build it — so I did.” 💡  
-> An AI-powered assistant to make libraries smarter, faster, and student-friendly.
+🚀 Project Overview
+Students often struggle in traditional libraries — from finding books to understanding rules. Library_Assistant solves this by creating an AI chatbot that:
 
----
+Finds books using natural language
 
-## 🚀 Project Overview
+Provides quick answers about library timings and rules
 
-In many libraries, students struggle to find the right books, understand borrowing rules, or get quick help. This project solves that problem by creating an **AI Library Assistant** that:
+Reads book images via OCR
 
-- Helps students **find relevant books** using smart search
-- Provides **library rules, timings, and issue policies**
-- Extracts text from **uploaded book images** using OCR
-- Works through **WhatsApp chatbot integration**
+Supports conversations over WhatsApp
 
----
+🧠 Features
+📘 Subject-wise Book Recommendations
 
-## 🧠 Features
+🔍 Smart Search with Embeddings (ChromaDB + GTE-Large)
 
-- 📘 Book suggestions based on subject
-- 🔍 Book finding using vector embeddings
-- 🕒 Replies about rules, timings, and book limits
-- 🖼️ OCR support to read book titles from images
-- 💬 Chatbot replies through WhatsApp (via n8n)
+🕒 Instant Responses about library rules, timings, issue policies
 
----
+🖼️ Image OCR to extract book names from images
 
-## 🛠️ Tech Stack
+💬 Chatbot Support via WhatsApp using n8n + FastAPI
 
-| Component | Tech |
-|----------|------|
-| Language Model | LLaMA 3 (8B) via Groq API |
-| Embeddings | HuggingFace `thenlper/gte-large` |
-| Vector Store | Chroma DB |
-| Backend | FastAPI |
-| OCR | Tesseract + Pillow |
-| Automation | n8n |
-| WhatsApp Bot | n8n + ngrok tunnel |
+🛠️ Tech Stack
+Component	Tech
+LLM	LLaMA 3 (8B) via Groq API
+Embeddings	thenlper/gte-large (HuggingFace)
+Vector Store	Chroma DB
+Backend API	FastAPI
+OCR Engine	Tesseract + Pillow
+Automation	n8n
+Messaging	WhatsApp (via n8n + ngrok)
 
----
+🧩 How It Works
 
-## 🧩 How It Works
+flowchart TD
+    A[User Message (WhatsApp/API)] --> B[FastAPI Endpoint]
+    B --> C[Vector Search (Chroma DB)]
+    C --> D[Prompt Creation (LangChain)]
+    D --> E[LLaMA 3 API via Groq]
+    E --> F[Reply Sent to User via WhatsApp (n8n)]
+    B --> G[OCR Module (if Image Sent)]
 
-1. **User Query** → Sent via API or WhatsApp
-2. **Vector Search** → Chroma returns relevant book content using `gte-large` embeddings
-3. **Prompt Building** → LangChain builds prompt with memory + context
-4. **Response** → LLaMA 3 (via Groq) generates the final reply
-5. **Memory** → Previous messages are tracked and used for better responses
-6. **Image OCR** → Text is extracted from uploaded book images
-7. **n8n WhatsApp Bot** → Sends user messages to FastAPI and replies back with AI responses
 
----
+📦 Installation & Setup
+✅ Prerequisites
+Python 3.10+
 
-## 📦 Installation
+Node.js (for n8n)
 
-### 1. Clone the Repository
-```bash
+Ngrok account
+
+Tesseract OCR installed
+
+
+ Clone the Repository
+bash
+Copy
+Edit
 git clone https://github.com/yourusername/Library_Assistant.git
 cd Library_Assistant
